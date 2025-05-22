@@ -62,7 +62,7 @@
 #         run: npx nuxi build --preset github_pages
 #         env:
 #           NUXT_CONTENT_PREVIEW_API: https://api.nuxt.studio
-          
+
 
 #       # Deployment job
 #       - name: Deploy 🚀
@@ -150,29 +150,54 @@ jobs:
 
       # Instala dependências e força a recompilação do better-sqlite3
       - name: Install dependencies and rebuild native modules
+        env:
+          # Forçar a compilação a partir do código fonte para better-sqlite3
+          npm_config_build_from_source: "true"
+          PYTHON: python3 # Explicitamente define o executável Python para node-gyp
+          # Ativa logs de depuração detalhados para node-gyp e prebuild-install
+          DEBUG: "node-gyp,prebuild-install,better-sqlite3"
         run: |
           if [ "${{ steps.pkgman.outputs.package_manager }}" = "pnpm" ]; then
             ${{ steps.pkgman.outputs.package_manager }} install --frozen-lockfile
-            echo "Attempting to rebuild better-sqlite3..."
-            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3
-          elif [ "${{ steps.pkgman.outputs.package_manager }}" = "yarn" ]; then
-            ${{ steps.pkgman.outputs.package_manager }} install --frozen-lockfile
-            # Para yarn, a recompilação pode ser feita de forma diferente ou pode não ser necessária
-            # se o yarn.lock estiver correto e as ferramentas de build presentes.
-            # Se o problema persistir com yarn, pode ser necessário adicionar:
-            # ${{ steps.pkgman.outputs.package_manager }} add better-sqlite3 --force
-            echo "Yarn install complete. Native module rebuild might need specific handling if issues persist."
+            echo "Attempting to rebuild better-sqlite3 with verbose logging and debug flags..."
+            # As variáveis de ambiente npm_config_build_from_source, PYTHON, e DEBUG devem ser capturadas
+            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3 --loglevel debug
           elif [ "${{ steps.pkgman.outputs.package_manager }}" = "npm" ]; then
             ${{ steps.pkgman.outputs.package_manager }} ci
-            echo "Attempting to rebuild better-sqlite3..."
-            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3
+            echo "Attempting to rebuild better-sqlite3 with verbose logging and debug flags..."
+            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3 --loglevel debug
           else
             echo "Unsupported package manager: ${{ steps.pkgman.outputs.package_manager }}"
             exit 1
           fi
-        env:
-          # Forçar a compilação a partir do código fonte para better-sqlite3
-          npm_config_build_from_source: true # Pode ajudar a garantir que ele use as ferramentas locais
+
+          echo "Diagnostic: Listing contents of potential better-sqlite3 build directories after rebuild attempt:"
+          # Tenta encontrar o diretório real do pacote better-sqlite3 dentro do store do .pnpm
+          # O padrão procura por better-sqlite3@ seguido por qualquer coisa (/node_modules/better-sqlite3 no final)
+          BETTER_SQLITE_PKG_DIR_PATTERN="./node_modules/.pnpm/better-sqlite3@*/node_modules/better-sqlite3"
+
+          # Encontra o primeiro diretório que corresponde ao padrão
+          ACTUAL_BETTER_SQLITE_DIR=$(find . -path "$BETTER_SQLITE_PKG_DIR_PATTERN" -type d -print -quit)
+
+          if [ -n "$ACTUAL_BETTER_SQLITE_DIR" ] && [ -d "$ACTUAL_BETTER_SQLITE_DIR" ]; then
+            echo "Actual package directory for better-sqlite3 seems to be: $ACTUAL_BETTER_SQLITE_DIR"
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/build/Release/"
+            ls -Al "$ACTUAL_BETTER_SQLITE_DIR/build/Release/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/build/Release/ not found or ls failed."
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/prebuilds/"
+            ls -AlR "$ACTUAL_BETTER_SQLITE_DIR/prebuilds/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/prebuilds/ not found or ls failed."
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/compiled/"
+            ls -AlR "$ACTUAL_BETTER_SQLITE_DIR/compiled/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/compiled/ not found or ls failed."
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/lib/binding/"
+            ls -AlR "$ACTUAL_BETTER_SQLITE_DIR/lib/binding/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/lib/binding/ not found or ls failed."
+          else
+            echo "Could not robustly find better-sqlite3 package directory in .pnpm store using pattern $BETTER_SQLITE_PKG_DIR_PATTERN for detailed listing."
+            echo "Listing based on fixed path from error log as fallback (less reliable for actual build files):"
+            ls -AlR ./node_modules/.pnpm/better-sqlite3@11.9.1/node_modules/better-sqlite3/ || echo "Fallback ls failed."
+          fi
 
       # Gera o site estático
       - name: Generate static site
@@ -188,6 +213,3 @@ jobs:
           folder: ./.output/public
           # branch: gh-pages # Opcional
           # clean: true # Opcional
-
-#         with:
-#           folder: ./.output/public
