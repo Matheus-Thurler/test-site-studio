@@ -1,72 +1,178 @@
 
-name: studio-nuxt-build
+# name: studio-nuxt-build
+# run-name: studio nuxt build
+
+# on:
+#   # Runs on pushes targeting the default branch
+#   push:
+#     branches:
+#       - 'master'
+
+#   # Allows you to run this workflow manually from the Actions tab
+#   workflow_dispatch:
+
+# # Add write workflow permissions
+# permissions:
+#   contents: write
+
+# # Allow one concurrent deployment
+# concurrency:
+#   group: "pages"
+#   cancel-in-progress: true
+
+# jobs:
+#   # Build job
+#   build-and-deploy:
+#     runs-on: ${{ matrix.os }}
+#     defaults:
+#       run:
+#         working-directory: .
+
+#     strategy:
+#       matrix:
+#         os: [ubuntu-latest]
+#         node: [20]
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+
+#       - name: Identify package manager
+#         id: pkgman
+#         run: |
+#           cache=`[ -f "./pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "./package-lock.json" ] && echo "npm" || ([ -f "./yarn.lock" ] && echo "yarn" || echo ""))`
+#           package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
+#           echo "cache=$cache" >> $GITHUB_OUTPUT
+#           echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
+
+#       - uses: pnpm/action-setup@v4
+#         if: ${{ steps.pkgman.outputs.package_manager == 'pnpm' }}
+#         name: Install pnpm
+#         id: pnpm-install
+
+#       - uses: actions/setup-node@v4
+#         with:
+#           version: ${{ matrix.node }}
+#           cache: ${{ steps.pkgman.outputs.cache }}
+
+#       - name: Install dependencies
+#         run: ${{ steps.pkgman.outputs.package_manager }} install
+
+#       - name: Generate
+#         run: npx nuxi build --preset github_pages
+#         env:
+#           NUXT_CONTENT_PREVIEW_API: https://api.nuxt.studio
+
+
+#       # Deployment job
+#       - name: Deploy 🚀
+#         uses: JamesIves/github-pages-deploy-action@v4
+#         with:
+#           folder: ./.output/public
+name: studio-nuxt-build-npm
 run-name: studio nuxt build
 
 on:
   # Runs on pushes targeting the default branch
   push:
     branches:
-      - 'master'
+      - 'master' # ou 'main', dependendo da sua branch padrão
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Add write workflow permissions
 permissions:
-  contents: write
+  contents: write # Necessário para JamesIves/github-pages-deploy-action fazer push
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: "pages-npm" # Nome de grupo diferente para evitar conflito com o de pnpm
   cancel-in-progress: true
 
 jobs:
   # Build job
   build-and-deploy:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: .
 
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [20]
-
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Identify package manager
+      - name: Set package manager to NPM
         id: pkgman
         run: |
-          cache=`[ -f "./pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "./package-lock.json" ] && echo "npm" || ([ -f "./yarn.lock" ] && echo "yarn" || echo ""))`
-          package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
-          echo "cache=$cache" >> $GITHUB_OUTPUT
-          echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
+          echo "Forcing NPM for this workflow run."
+          echo "package_manager=npm" >> $GITHUB_OUTPUT
+          echo "cache=npm" >> $GITHUB_OUTPUT
 
-      - uses: pnpm/action-setup@v4
-        if: ${{ steps.pkgman.outputs.package_manager == 'pnpm' }}
-        name: Install pnpm
-        id: pnpm-install
+      # O passo "Setup pnpm" foi removido
 
-      - uses: actions/setup-node@v4
+      # Configura Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          version: ${{ matrix.node }}
-          cache: ${{ steps.pkgman.outputs.cache }}
+          node-version: 20 # Use a versão do Node.js do seu projeto, ex: '20.x'
+          cache: ${{ steps.pkgman.outputs.cache }} # Será 'npm'
+          cache-dependency-path: '**/package-lock.json' # Cache para npm usa package-lock.json
 
-      - name: Install dependencies
-        run: ${{ steps.pkgman.outputs.package_manager }} install
+      # Instala ferramentas de build necessárias para módulos nativos
+      - name: Install build tools (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libsqlite3-dev build-essential python3
 
-      - name: Generate
-        # run: npx nuxi build --preset github_pages
-        run: npx nuxi generate
+      # Instala dependências e força a recompilação do better-sqlite3 usando NPM
+      - name: Install dependencies and rebuild native modules (NPM)
+        env:
+          # Forçar a compilação a partir do código fonte para better-sqlite3
+          npm_config_build_from_source: "true"
+          PYTHON: python3 # Explicitamente define o executável Python para node-gyp
+          # Ativa logs de depuração detalhados para node-gyp e prebuild-install
+          DEBUG: "node-gyp,prebuild-install,better-sqlite3"
+        run: |
+          echo "Using NPM to install dependencies and rebuild modules."
+          npm ci
+          echo "Attempting to rebuild better-sqlite3 with npm, verbose logging, and debug flags..."
+          npm rebuild better-sqlite3 --build-from-source --loglevel=debug
+
+          echo "Diagnostic: Listing contents of potential better-sqlite3 build directories after rebuild attempt:"
+          # O caminho para better-sqlite3 com npm é diretamente em node_modules
+          ACTUAL_BETTER_SQLITE_DIR="./node_modules/better-sqlite3"
+
+          if [ -d "$ACTUAL_BETTER_SQLITE_DIR" ]; then
+            echo "Package directory for better-sqlite3 (npm): $ACTUAL_BETTER_SQLITE_DIR"
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/build/Release/"
+            ls -Al "$ACTUAL_BETTER_SQLITE_DIR/build/Release/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/build/Release/ not found or ls failed."
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/prebuilds/"
+            ls -AlR "$ACTUAL_BETTER_SQLITE_DIR/prebuilds/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/prebuilds/ not found or ls failed."
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/compiled/"
+            ls -AlR "$ACTUAL_BETTER_SQLITE_DIR/compiled/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/compiled/ not found or ls failed."
+
+            echo "Listing $ACTUAL_BETTER_SQLITE_DIR/lib/binding/"
+            ls -AlR "$ACTUAL_BETTER_SQLITE_DIR/lib/binding/" || echo "Directory $ACTUAL_BETTER_SQLITE_DIR/lib/binding/ not found or ls failed."
+          else
+            echo "Could not find better-sqlite3 package directory at $ACTUAL_BETTER_SQLITE_DIR for detailed listing."
+          fi
+
+      # Gera o site estático
+      - name: Generate static site (NPM)
+        run: npm exec -- nuxi build --preset github_pages
         env:
           NUXT_CONTENT_PREVIEW_API: https://api.nuxt.studio
+          NODE_ENV: production # Definindo explicitamente
 
-
-      # Deployment job
-      - name: Deploy 🚀
+      # Faz o deploy para o GitHub Pages
+      - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ./.output/public
+          # branch: gh-pages # Opcional
+          # clean: true # Opcional
