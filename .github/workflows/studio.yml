@@ -159,24 +159,28 @@ jobs:
         run: |
           if [ "${{ steps.pkgman.outputs.package_manager }}" = "pnpm" ]; then
             ${{ steps.pkgman.outputs.package_manager }} install --frozen-lockfile
-            echo "Attempting to rebuild better-sqlite3 with verbose logging and debug flags..."
-            # As variáveis de ambiente npm_config_build_from_source, PYTHON, e DEBUG devem ser capturadas
-            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3 --loglevel debug
+            echo "Attempting to directly run build-release script for better-sqlite3..."
+            # Tenta executar o script 'build-release' do better-sqlite3 diretamente
+            # O comando 'pnpm exec --package <nome_do_pacote> -- <comando>' executa um comando no contexto do pacote especificado.
+            # 'npm run build-release' é o comando que queremos executar dentro do pacote better-sqlite3.
+            # A flag --loglevel debug é para o npm dentro do script do pacote, se ele a respeitar.
+            ${{ steps.pkgman.outputs.package_manager }} exec --package better-sqlite3 -- npm run build-release --loglevel=debug
           elif [ "${{ steps.pkgman.outputs.package_manager }}" = "npm" ]; then
             ${{ steps.pkgman.outputs.package_manager }} ci
-            echo "Attempting to rebuild better-sqlite3 with verbose logging and debug flags..."
-            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3 --loglevel debug
+            echo "Attempting to directly run build-release script for better-sqlite3..."
+            # Para npm, podemos tentar forçar a execução do script de build do pacote
+            # O comando 'npm rebuild better-sqlite3 --build-from-source' já tenta isso.
+            # Alternativamente, podemos tentar executar o script diretamente se soubermos o caminho,
+            # mas 'npm rebuild' com as flags certas deve ser suficiente.
+            # Vamos manter o rebuild com flags para npm, mas a abordagem do pnpm é mais direcionada.
+            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3 --build-from-source --loglevel=debug
           else
             echo "Unsupported package manager: ${{ steps.pkgman.outputs.package_manager }}"
             exit 1
           fi
 
           echo "Diagnostic: Listing contents of potential better-sqlite3 build directories after rebuild attempt:"
-          # Tenta encontrar o diretório real do pacote better-sqlite3 dentro do store do .pnpm
-          # O padrão procura por better-sqlite3@ seguido por qualquer coisa (/node_modules/better-sqlite3 no final)
           BETTER_SQLITE_PKG_DIR_PATTERN="./node_modules/.pnpm/better-sqlite3@*/node_modules/better-sqlite3"
-
-          # Encontra o primeiro diretório que corresponde ao padrão
           ACTUAL_BETTER_SQLITE_DIR=$(find . -path "$BETTER_SQLITE_PKG_DIR_PATTERN" -type d -print -quit)
 
           if [ -n "$ACTUAL_BETTER_SQLITE_DIR" ] && [ -d "$ACTUAL_BETTER_SQLITE_DIR" ]; then
