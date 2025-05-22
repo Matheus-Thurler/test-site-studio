@@ -96,12 +96,6 @@ jobs:
       run:
         working-directory: . # Define o diretório de trabalho para todos os comandos run
 
-    # A matrix não é estritamente necessária se você só tem uma combinação de OS/Node,
-    # mas pode ser mantida se você planeja testar com múltiplas versões no futuro.
-    # strategy:
-    #   matrix:
-    #     node: [20] # Ou uma versão LTS como '18.x', '20.x'
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -125,7 +119,7 @@ jobs:
             CACHE_TYPE="npm"
             echo "Using npm"
           else
-            # Default para pnpm se nenhum arquivo de lock for encontrado, ou você pode optar por falhar o workflow
+            # Default para pnpm se nenhum arquivo de lock for encontrado
             PACKAGE_MANAGER="pnpm"
             CACHE_TYPE="pnpm"
             echo "No lockfile found. Defaulting to pnpm."
@@ -134,62 +128,66 @@ jobs:
           echo "cache=$CACHE_TYPE" >> $GITHUB_OUTPUT
 
       # Configura pnpm se for o gerenciador de pacotes detectado
-      # A versão do pnpm será lida do campo 'packageManager' no package.json
       - name: Setup pnpm
         if: steps.pkgman.outputs.package_manager == 'pnpm'
         uses: pnpm/action-setup@v4
-        # A 'version' foi removida para usar a especificada no package.json (ex: pnpm@10.11.0)
+        # A 'version' foi removida para usar a especificada no package.json
 
       # Configura Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20 # Use a versão do Node.js do seu projeto, ex: '20.x'
-          cache: ${{ steps.pkgman.outputs.cache }} # Configura o cache para o gerenciador de pacotes detectado
-          cache-dependency-path: '**/pnpm-lock.yaml' # Adicionado para maior precisão do cache com pnpm
+          cache: ${{ steps.pkgman.outputs.cache }}
+          cache-dependency-path: '**/pnpm-lock.yaml' # Para pnpm
 
-      # PASSO ADICIONADO: Instala ferramentas de build necessárias para módulos nativos
+      # Instala ferramentas de build necessárias para módulos nativos
       - name: Install build tools (Linux)
-        if: runner.os == 'Linux' # Garante que este passo só roda em runners Linux
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update -y
           sudo apt-get install -y libsqlite3-dev build-essential python3
-        # Para outros OS, você precisaria de comandos diferentes (ex: brew install sqlite para macOS)
 
-      # Instala dependências
-      - name: Install dependencies
+      # Instala dependências e força a recompilação do better-sqlite3
+      - name: Install dependencies and rebuild native modules
         run: |
           if [ "${{ steps.pkgman.outputs.package_manager }}" = "pnpm" ]; then
             ${{ steps.pkgman.outputs.package_manager }} install --frozen-lockfile
+            echo "Attempting to rebuild better-sqlite3..."
+            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3
           elif [ "${{ steps.pkgman.outputs.package_manager }}" = "yarn" ]; then
             ${{ steps.pkgman.outputs.package_manager }} install --frozen-lockfile
+            # Para yarn, a recompilação pode ser feita de forma diferente ou pode não ser necessária
+            # se o yarn.lock estiver correto e as ferramentas de build presentes.
+            # Se o problema persistir com yarn, pode ser necessário adicionar:
+            # ${{ steps.pkgman.outputs.package_manager }} add better-sqlite3 --force
+            echo "Yarn install complete. Native module rebuild might need specific handling if issues persist."
           elif [ "${{ steps.pkgman.outputs.package_manager }}" = "npm" ]; then
             ${{ steps.pkgman.outputs.package_manager }} ci
+            echo "Attempting to rebuild better-sqlite3..."
+            ${{ steps.pkgman.outputs.package_manager }} rebuild better-sqlite3
           else
             echo "Unsupported package manager: ${{ steps.pkgman.outputs.package_manager }}"
             exit 1
           fi
-        # A linha original era: ${{ steps.pkgman.outputs.package_manager }} install
-        # Usar --frozen-lockfile (pnpm, yarn) ou ci (npm) é recomendado para CI.
+        env:
+          # Forçar a compilação a partir do código fonte para better-sqlite3
+          npm_config_build_from_source: true # Pode ajudar a garantir que ele use as ferramentas locais
 
       # Gera o site estático
       - name: Generate static site
-        # É recomendável usar o gerenciador de pacotes para executar scripts locais
         run: ${{ steps.pkgman.outputs.package_manager }} exec nuxi build --preset github_pages
-        # Alternativamente, se nuxi estiver globalmente disponível ou via npx:
-        # run: npx nuxi build --preset github_pages
         env:
           NUXT_CONTENT_PREVIEW_API: https://api.nuxt.studio
-          # NODE_ENV: production # nuxi build geralmente define isso, mas pode ser explícito se necessário
+          NODE_ENV: production # Definindo explicitamente
 
       # Faz o deploy para o GitHub Pages
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./.output/public # A pasta que o Nuxt gera para o github_pages
-          # branch: gh-pages # Opcional: a branch para a qual fazer o deploy (padrão: gh-pages)
-          # clean: true # Opcional: remove arquivos existentes da branch de deploy antes
-          # token: ${{ secrets.GITHUB_TOKEN }} # Opcional: padrão é GITHUB_TOKEN
+          folder: ./.output/public
+          # branch: gh-pages # Opcional
+          # clean: true # Opcional
 
 #         with:
 #           folder: ./.output/public
