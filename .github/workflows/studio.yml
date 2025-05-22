@@ -134,11 +134,11 @@ jobs:
           echo "cache=$CACHE_TYPE" >> $GITHUB_OUTPUT
 
       # Configura pnpm se for o gerenciador de pacotes detectado
+      # A versão do pnpm será lida do campo 'packageManager' no package.json
       - name: Setup pnpm
         if: steps.pkgman.outputs.package_manager == 'pnpm'
         uses: pnpm/action-setup@v4
-        with:
-          version: 8 # Especifique a versão do pnpm que você usa no seu projeto
+        # A 'version' foi removida para usar a especificada no package.json (ex: pnpm@10.11.0)
 
       # Configura Node.js
       - name: Setup Node.js
@@ -146,6 +146,7 @@ jobs:
         with:
           node-version: 20 # Use a versão do Node.js do seu projeto, ex: '20.x'
           cache: ${{ steps.pkgman.outputs.cache }} # Configura o cache para o gerenciador de pacotes detectado
+          cache-dependency-path: '**/pnpm-lock.yaml' # Adicionado para maior precisão do cache com pnpm
 
       # PASSO ADICIONADO: Instala ferramentas de build necessárias para módulos nativos
       - name: Install build tools (Linux)
