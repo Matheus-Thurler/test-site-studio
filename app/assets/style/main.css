@@ -23,9 +23,9 @@
 }
 
 html.dark {
-  --ui-bg: var(--color-neutral-950);
+  --ui-bg: #02132b;
   --bg-secondary: #282828;
-  --bg-card: #282828;
+  --bg-card: #792f2f;
   --bg-card-hover: #343434;
 
   --font-primary: #ededed;

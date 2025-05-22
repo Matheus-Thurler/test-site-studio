@@ -13,7 +13,7 @@ const { data: projects } = await useAsyncData('projects', async () => {
 </script>
 
 <template>
-  <div class="flex w-full flex-col gap-6">
+  <div class="flex w-full flex-col gap-6 shadow-xl">
     <h3 class="font-newsreader italic text-white-shadow text-xl">
       {{ $t("navigation.works") }}
     </h3>
