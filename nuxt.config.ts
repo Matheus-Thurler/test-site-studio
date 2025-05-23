@@ -102,7 +102,7 @@ export default defineNuxtConfig({
   i18n: {
     locales: [
       { code: 'en', name: 'English', language: 'en-US' },
-      { code: 'pt-br', name: 'Portuguese', language: 'pt-BR' },
+      { code: 'ptbr', name: 'Portuguese', language: 'pt-BR' },
     ],
     detectBrowserLanguage: {
       useCookie: true,
