@@ -81,7 +81,7 @@ export default defineNuxtConfig({
       websocket: true,
     },
     prerender: {
-      autoSubfolderIndex: false,
+      autoSubfolderIndex: true,
       crawlLinks: true,
       routes: ['/en', '/ptbr'],
     },
