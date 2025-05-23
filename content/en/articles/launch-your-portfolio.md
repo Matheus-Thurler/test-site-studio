@@ -1,14 +1,13 @@
 ---
-title: Finally launch your portfolio
-date: 20/10/2023
+title: "Commands You Need to Know "
+date: 20/01/2025
 description: Aiming for perfectionism is a very good state of mind. On the other
   hand, working until perfectionism is 100% can also be bad. Here are some tips
   to help you get your portfolio off the ground.
 tags:
-  - Portfolio
   - Development
-  - Design
   - Productivity
+  - Kubernetes
 image: https://media-site-matheus-nuxt.s3.amazonaws.com/kubectl.jpeg
 readingTime: "5"
 ---
@@ -37,24 +36,24 @@ kubectl [command] [RESOURCE_TYPE] [RESOURCE_NAME] [flags]
 These are the commands you'll likely use most frequently:
 
 - `kubectl get <resource>`: Lists Kubernetes resources.
-  - _Practical example_: `kubectl get pods` lists all Pods in the current namespace. To see Pods in all namespaces, use `kubectl get pods --all-namespaces`.
+  - *Practical example*: `kubectl get pods` lists all Pods in the current namespace. To see Pods in all namespaces, use `kubectl get pods --all-namespaces`.
   - Add `-o wide` for more information: `kubectl get nodes -o wide`.
 - `kubectl describe <resource> <resource_name>`: Displays detailed information about a specific resource, very useful for troubleshooting.
-  - _Practical example_: `kubectl describe pod my-pod-123` shows details, events, and status of the Pod "my-pod-123".
+  - *Practical example*: `kubectl describe pod my-pod-123` shows details, events, and status of the Pod "my-pod-123".
 - `kubectl create -f <filename.yaml>`: Creates a new Kubernetes resource from a YAML or JSON definition file.
-  - _Tip_: This is the preferred way to create resources declaratively.
+  - *Tip*: This is the preferred way to create resources declaratively.
 - `kubectl apply -f <filename.yaml>`: Applies a configuration to a Kubernetes resource. If the resource doesn't exist, it will be created. If it already exists, it will be updated. This is generally preferable to `create` for ongoing management.
-  - _Practical example_: `kubectl apply -f my-deployment.yaml`.
+  - *Practical example*: `kubectl apply -f my-deployment.yaml`.
 - `kubectl delete <resource> <resource_name>` or `kubectl delete -f <filename.yaml>`: Removes a Kubernetes resource.
-  - _Practical example_: `kubectl delete deployment my-app-deployment`.
+  - *Practical example*: `kubectl delete deployment my-app-deployment`.
 - `kubectl scale deployment <deployment_name> --replicas=<number>`: Sets the number of replicas for a Deployment.
-  - _Practical example_: `kubectl scale deployment my-app --replicas=3`.
+  - *Practical example*: `kubectl scale deployment my-app --replicas=3`.
 - `kubectl logs <pod_name>`: Displays the logs of a container within a Pod.
-  - _Tip_: Use `-f` to follow logs in real-time (`kubectl logs -f my-pod-123`). If the Pod has multiple containers, specify the container with `-c <container_name>`.
+  - *Tip*: Use `-f` to follow logs in real-time (`kubectl logs -f my-pod-123`). If the Pod has multiple containers, specify the container with `-c <container_name>`.
 - `kubectl exec -it <pod_name> -- <command>`: Executes an interactive command inside a container of a Pod.
-  - _Practical example_: `kubectl exec -it my-pod-123 -- /bin/bash` opens a bash shell inside the container.
+  - *Practical example*: `kubectl exec -it my-pod-123 -- /bin/bash` opens a bash shell inside the container.
 - `kubectl port-forward <pod_name> <local_port>:<pod_port>`: Forwards one or more local ports to a Pod. Useful for accessing an application running in the Pod locally during development.
-  - _Practical example_: `kubectl port-forward my-web-pod 8080:80`.
+  - *Practical example*: `kubectl port-forward my-web-pod 8080:80`.
 
 ## Advanced and Management Commands ⚙️
 
@@ -75,9 +74,9 @@ For more specific tasks and cluster management:
 ## Other Useful Commands That Make Life Easier ✨
 
 - `kubectl explain <resource>`: Provides detailed documentation about the fields of a Kubernetes resource. Very useful for learning the structure of YAML files.
-  - _Practical example_: `kubectl explain pod.spec.containers`.
+  - *Practical example*: `kubectl explain pod.spec.containers`.
 - `kubectl edit <resource> <resource_name>`: Opens the default editor to modify a resource's configuration directly on the cluster.
-  - _Caution_: Use sparingly; always prefer `apply -f` to maintain version control of your configurations.
+  - *Caution*: Use sparingly; always prefer `apply -f` to maintain version control of your configurations.
 - `kubectl diff -f <filename.yaml>`: Compares a local manifest with the current configuration in the cluster, showing differences before applying.
 
 ## Shortcuts (Aliases) for Agility ⚡
@@ -103,7 +102,7 @@ Most `kubectl` commands accept additional options (flags):
 
 To get more information about a specific command, use `kubectl help <command>`:
 
-- _Example_: `kubectl help get` or `kubectl get --help`.
+- *Example*: `kubectl help get` or `kubectl get --help`.
 
 ## Conclusion: Keep Exploring!
 
