@@ -17,7 +17,7 @@ export default defineAppConfig({
     youtube: 'https://www.youtube.com/@matheusthurler',
   },
   seo: {
-    title: 'Personal blog and Portfoliio',
+    title: 'Personal blog and Portfolio',
     description: 'Canvas is a simple but beautiful portfolio template for designers and developers built with Nuxt and Tailwind CSS. Made with ❤️ by HugoRCD',
     url: 'https://matheusthurler.com.br',
   },

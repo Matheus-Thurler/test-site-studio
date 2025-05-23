@@ -47,7 +47,7 @@ export default defineNuxtSchema({
           title: 'Email',
           description: 'Your email.',
           icon: 'lucide:mail',
-          default: 'contact@hrcd.fr',
+          default: 'contact@hrcd.pt-br',
         }),
         phone: field({
           type: 'string',
