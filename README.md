@@ -1,4 +1,3 @@
-![Portfolio Social Preview](./public/og.png)
 
 <p align="center">
     <a aria-label="Hugo's Website" href="https://hrcd.fr">
