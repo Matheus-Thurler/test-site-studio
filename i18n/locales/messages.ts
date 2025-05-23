@@ -17,7 +17,7 @@ const messages = {
     global: en_global,
     writing: en_writing,
   },
-  pt: {
+  ptbr: {
     navigation: pt_navigation,
     contact: pt_contact,
     global: pt_global,
