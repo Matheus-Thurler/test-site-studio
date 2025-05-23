@@ -1,14 +1,14 @@
 import en_navigation from './en/navigation.json'
-import pt_navigation from '~~/i18n/locales/ptbr/navigation.json'
+import pt_navigation from './ptbr/navigation.json'
 
 import en_contact from './en/contact.json'
-import pt_contact from '~~/i18n/locales/ptbr/contact.json'
+import pt_contact from './ptbr/contact.json'
 
 import en_global from './en/global.json'
-import pt_global from '~~/i18n/locales/ptbr/global.json'
+import pt_global from './ptbr/global.json'
 
 import en_writing from './en/writing.json'
-import pt_writing from '~~/i18n/locales/ptbr/writing.json'
+import pt_writing from './ptbr/writing.json'
 
 const messages = {
   en: {
