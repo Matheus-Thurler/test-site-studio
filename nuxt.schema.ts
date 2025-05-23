@@ -97,7 +97,7 @@ export default defineNuxtSchema({
           description: 'The language that you want to use for your website.',
           icon: 'lucide:language',
           default: 'en',
-          required: ['en', 'fr'],
+          required: ['en', 'ptbr'],
         }),
       },
     }),
