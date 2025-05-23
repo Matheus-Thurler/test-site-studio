@@ -8,8 +8,8 @@ jobs:
     uses: Matheus-Thurler/reusable-workflows/.github/workflows/sta-build.yml@master
     with:
       node-version: ${{ vars.node_version }}
-    secrets:
-      TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+    #secrets:
+      #TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
       #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
       #SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
@@ -21,4 +21,4 @@ jobs:
       AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
       AWS_REGION: ${{ secrets.AWS_REGION }}
       AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_NAME }}
-      TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
+      #TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
