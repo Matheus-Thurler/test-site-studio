@@ -89,6 +89,11 @@
       "name": "Lightroom",
       "link": "https://www.adobe.com/products/photoshop-lightroom.html",
       "icon": "custom:lightroom"
+    },
+    {
+      "name": "Youtube",
+      "link": "https://www.youtube.com",
+      "icon": "custom:youtube"
     }
   ]
 }

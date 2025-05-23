@@ -27,7 +27,7 @@
           </h1>
 
           <!-- subtitle -->
-          <h2 class="mx-auto mt-4 max-w-xl text-center text-lg antialiased text-white/60">
+          <h2 class="mx-auto mt-4 max-w text-center text-lg antialiased text-white/60">
             <slot
               name="hero_subtitle"
               mdc-unwrap="p"

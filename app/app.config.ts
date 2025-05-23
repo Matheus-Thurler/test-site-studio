@@ -1,6 +1,6 @@
 export default defineAppConfig({
   global: {
-    meetingLink: 'https://cal.com/hugorcd/15min',
+    meetingLink: 'https://cal.com/matheus-thurler/15min',
     available: true,
   },
   profile: {
@@ -12,15 +12,14 @@ export default defineAppConfig({
   },
   socials: {
     github: 'https://github.com/Matheus-Thurler',
-    twitter: 'https://twitter.com/HugoRCD__',
+    // twitter: 'https://twitter.com/HugoRCD__',
     linkedin: 'https://www.linkedin.com/in/matheus-thurler-34519870/',
-    instagram: '',
-    spotify: '',
+    youtube: 'https://www.youtube.com/@matheusthurler',
   },
   seo: {
     title: 'Personal blog and Portfoliio',
     description: 'Canvas is a simple but beautiful portfolio template for designers and developers built with Nuxt and Tailwind CSS. Made with ❤️ by HugoRCD',
-    url: 'https://canvas.hrcd.fr',
+    url: 'https://matheusthurler.com.br',
   },
   ui: {
     colors: {
