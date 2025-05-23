@@ -2,7 +2,7 @@
 import type { ContentEnCollectionItem, ContentFrCollectionItem } from '@nuxt/content'
 
 useScriptPlausibleAnalytics({
-  domain: 'canvas.hrcd.pt-br',
+  domain: 'canvas.hrcd.ptbr',
   scriptInput: {
     src: 'https://analytics.hrcd.fr/js/script.js',
   },

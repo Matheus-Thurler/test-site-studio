@@ -53,13 +53,13 @@ export const collections = {
       schema: commonContentSchema,
     }),
   ),
-  content_fr: defineCollection(
+  content_ptbr: defineCollection(
     asSeoCollection({
       type: 'page',
       source: {
-        include: 'pt-br/**/*.md',
-        exclude: ['pt-br/articles/*.md'],
-        prefix: '/pt-br',
+        include: 'ptbr/**/*.md',
+        exclude: ['ptbr/articles/*.md'],
+        prefix: '/ptbr',
       },
       schema: commonContentSchema,
     }),
@@ -74,12 +74,12 @@ export const collections = {
       schema: commonArticleSchema,
     }),
   ),
-  articles_fr: defineCollection(
+  articles_ptbr: defineCollection(
     asSeoCollection({
       type: 'page',
       source: {
-        include: 'pt-br/articles/*.md',
-        prefix: '/pt-br/articles',
+        include: 'ptbr/articles/*.md',
+        prefix: '/ptbr/articles',
       },
       schema: commonArticleSchema,
     }),
@@ -91,10 +91,10 @@ export const collections = {
       schema: commonProjectSchema,
     }),
   ),
-  projects_fr: defineCollection(
+  projects_ptbr: defineCollection(
     asSeoCollection({
       type: 'data',
-      source: 'pt-br/projects/*.json',
+      source: 'ptbr/projects/*.json',
       schema: commonProjectSchema,
     }),
   ),
@@ -116,9 +116,9 @@ export const collections = {
     source: 'en/faq.json',
     schema: commonFaqSchema,
   }),
-  faq_fr: defineCollection({
+  faq_ptbr: defineCollection({
     type: 'data',
-    source: 'pt-br/faq.json',
+    source: 'ptbr/faq.json',
     schema: commonFaqSchema,
   }),
 }
