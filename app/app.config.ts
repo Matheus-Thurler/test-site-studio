@@ -18,8 +18,9 @@ export default defineAppConfig({
   },
   seo: {
     title: 'Personal blog and Portfolio',
-    description: 'Canvas is a simple but beautiful portfolio template for designers and developers built with Nuxt and Tailwind CSS. Made with ❤️ by HugoRCD',
+    description: 'Personal blog and Portfolio',
     url: 'https://matheusthurler.com.br',
+    lang: 'en',
   },
   ui: {
     colors: {
