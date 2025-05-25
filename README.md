@@ -10,14 +10,9 @@
   </a>
 </p>
 
-
 # Canvas template
 
 Canvas Portfolio is a fully customizable i18n portfolio template built with Nuxt and Nuxt UI, designed to help you showcase your work, testimonials, and key information with ease. The template integrates with Nuxt Studio for a smooth editing experience, while leveraging Nuxt Content for content management. Built with performance, flexibility, and responsiveness in mind, Canvas Portfolio provides a robust foundation for developers and creatives alike.
-
-## Demo
-
-You can see a live demo at [canvas.hrcd.fr](https://canvas.hrcd.fr/).
 
 ## Features
 
