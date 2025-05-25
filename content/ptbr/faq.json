@@ -7,11 +7,11 @@
       "questions": [
         {
           "label": "Quais serviços eu ofereço?",
-          "content": "Eu ofereço principalmente serviços de desenvolvimento web e mobile, mas também design e consultoria web. Meu objetivo é ajudar você a criar produtos de qualidade, que atendam às suas necessidades e às dos seus usuários."
+          "content": "Eu ofereço principalmente serviços de consultoria de DevOps e Cloud. Meu objetivo é ajudar você a criar uma infraestrutura, que atendam às suas necessidades e às dos seus usuários."
         },
         {
-          "label": "Você pode me ajudar a aprender a fazer um site?",
-          "content": "No momento, não ofereço cursos, mas posso recomendar recursos e dicas para orientar melhor seu aprendizado."
+          "label": "Você pode me ajudar a aprender a fazer uma infra?",
+          "content": "No momento, estou criando cursos para disponibilizar e criando videos no youtube, mas posso recomendar recursos e dicas para orientar melhor seu aprendizado."
         }
       ]
     },
@@ -20,19 +20,7 @@
       "questions": [
         {
           "label": "Quanto custa um projeto?",
-          "content": "O custo de um projeto depende de muitos fatores, como o tamanho do projeto, as funcionalidades, o tempo de desenvolvimento, etc. O valor inicial dos meus serviços web começa em 2000€, com uma média entre 3000€ e 10000€. Para outros serviços de design ou consultoria, geralmente cobro 450€ por dia."
-        },
-        {
-          "label": "Como funciona o pagamento de um projeto?",
-          "content": "Peço um adiantamento de 40% antes de iniciar o projeto, e os 60% restantes após a entrega com sucesso. Aceito pagamentos por transferência bancária, PayPal, etc."
-        },
-        {
-          "label": "Quanto tempo dura um projeto?",
-          "content": "É difícil dar uma estimativa precisa, pois cada projeto é diferente, mas a maioria dos meus trabalhos anteriores levou entre 2 semanas e 2 meses."
-        },
-        {
-          "label": "Você oferece descontos?",
-          "content": "Ofereço 15% de desconto para estudantes e organizações sem fins lucrativos."
+          "content": "O custo de um projeto depende de muitos fatores, como o tamanho do projeto, as funcionalidades, o tempo de desenvolvimento, etc."
         }
       ]
     },
@@ -41,11 +29,11 @@
       "questions": [
         {
           "label": "O que você mais gosta neste trabalho?",
-          "content": "Adoro aprender coisas novas e poder criar praticamente tudo do zero, criar coisas bonitas que as pessoas usarão e apreciarão."
+          "content": "Adoro aprender coisas novas e poder criar praticamente tudo do zero, criar coisas automatizadas que as pessoas usarão e apreciarão."
         },
         {
           "label": "Tem paixões fora do trabalho?",
-          "content": "Eu amo o que faço, então geralmente passo muito tempo trabalhando em projetos pessoais, fotografia, etc. Também sou muito fã de esportes. Vou frequentemente à academia e comecei a escalar recentemente!"
+          "content": "Eu amo o que faço, então geralmente passo muito tempo trabalhando em projetos pessoais, jogando um video game, etc."
         }
       ]
     }
