@@ -1,7 +1,7 @@
 import { Resend } from 'resend'
 import type { H3Event } from 'h3'
 
-const resend = new Resend(process.env.NUXT_PRIVATE_RESEND_API_KEY)
+const resend = new Resend('re_UdxphSwW_2R5g25H7zM6ibvHrqVwGRZjj')
 
 export default defineEventHandler(async (event: H3Event) => {
   try {

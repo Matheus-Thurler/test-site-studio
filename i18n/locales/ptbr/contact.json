@@ -1,20 +1,20 @@
 {
-  "title": "Contactez moi",
-  "description" : "Discutons de votre idée, projet ou de tout autre chose !",
-  "fullname": "Nom complet",
-  "email": "Email",
-  "phone": "Téléphone",
-  "subject": "Sujet de votre message",
-  "message": "Message",
-  "submit": "Envoyer",
-  "disabled": "Vous devez définir votre clé d'API resend",
-  "success": "Votre message a été envoyé avec succès",
-  "error": "Oups, une erreur s'est produite lors de l'envoi de votre message :(",
-  "budget": "Budget",
+  "title": "Entre em contato",
+  "description": "Vamos conversar sobre sua ideia, projeto ou qualquer outra coisa!",
+  "fullname": "Nome completo",
+  "email": "E-mail",
+  "phone": "Telefone",
+  "subject": "Assunto da mensagem",
+  "message": "Mensagem",
+  "submit": "Enviar",
+  "disabled": "Você precisa definir sua chave de API do Resend",
+  "success": "Sua mensagem foi enviada com sucesso",
+  "error": "Ops, ocorreu um erro ao enviar sua mensagem :(",
+  "budget": "Orçamento",
   "subject_types": {
-    "project": "Parler d'un projet",
-    "bug": "Signaler un bug",
-    "question": "Poser une question",
-    "other": "Autre"
+    "project": "Falar sobre um projeto",
+    "bug": "Reportar um erro",
+    "question": "Fazer uma pergunta",
+    "other": "Outro"
   }
 }

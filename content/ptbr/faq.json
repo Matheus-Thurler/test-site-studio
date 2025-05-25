@@ -3,49 +3,49 @@
   "subtitle": "Coisas que me perguntam muito",
   "faqQuestions": [
     {
-      "title": "Services",
+      "title": "Serviços",
       "questions": [
         {
-          "label": "Quels services je propose?",
-          "content": "Je propose principalement des services de développement web et mobile, mais aussi de design et de consulting web. Mon objectif est de vous aider à créer des produits de qualité, qui répondent à vos besoins et à ceux de vos utilisateurs."
+          "label": "Quais serviços eu ofereço?",
+          "content": "Eu ofereço principalmente serviços de desenvolvimento web e mobile, mas também design e consultoria web. Meu objetivo é ajudar você a criar produtos de qualidade, que atendam às suas necessidades e às dos seus usuários."
         },
         {
-          "label": "Peux-tu m'aider à apprendre à faire un site web?",
-          "content": "Je ne propose pas de cours pour le moment, mais je peux vous recommander des ressources et conseils pour vous orienter au mieux dans votre apprentissage."
+          "label": "Você pode me ajudar a aprender a fazer um site?",
+          "content": "No momento, não ofereço cursos, mas posso recomendar recursos e dicas para orientar melhor seu aprendizado."
         }
       ]
     },
     {
-      "title": "Tarification",
+      "title": "Precificação",
       "questions": [
         {
-          "label": "Combien coûte un projet?",
-          "content": "Le coût d'un projet dépend de nombreux facteurs, tels que la taille du projet, les fonctionnalités, le temps de développement, etc. Le montant initial de mes services web commence à 2000€, avec une moyenne comprise entre 3000€ et 10000€. Pour tout autre service de design ou de consulting, je facture généralement 450€ par jour."
+          "label": "Quanto custa um projeto?",
+          "content": "O custo de um projeto depende de muitos fatores, como o tamanho do projeto, as funcionalidades, o tempo de desenvolvimento, etc. O valor inicial dos meus serviços web começa em 2000€, com uma média entre 3000€ e 10000€. Para outros serviços de design ou consultoria, geralmente cobro 450€ por dia."
         },
         {
-          "label": "Comment fonctionne le paiement pour un projet?",
-          "content": "Je demande un acompte de 40% avant de commencer un projet, et les 60% restants après une livraison réussie. J'accepte les paiements par virement bancaire, PayPal, etc..."
+          "label": "Como funciona o pagamento de um projeto?",
+          "content": "Peço um adiantamento de 40% antes de iniciar o projeto, e os 60% restantes após a entrega com sucesso. Aceito pagamentos por transferência bancária, PayPal, etc."
         },
         {
-          "label": "Combien de temps dure un projet?",
-          "content": "Il est difficile de donner une estimation précise, car chaque projet est différent, mais la majorité de mes travaux passés ont pris entre 2 semaines et 2 mois."
+          "label": "Quanto tempo dura um projeto?",
+          "content": "É difícil dar uma estimativa precisa, pois cada projeto é diferente, mas a maioria dos meus trabalhos anteriores levou entre 2 semanas e 2 meses."
         },
         {
-          "label": "Est-ce que je propose des réductions?",
-          "content": "J'offre une réduction de 15% pour les étudiants et les organisations à but non lucratif."
+          "label": "Você oferece descontos?",
+          "content": "Ofereço 15% de desconto para estudantes e organizações sem fins lucrativos."
         }
       ]
     },
     {
-      "title": "Personnel",
+      "title": "Pessoal",
       "questions": [
         {
-          "label": "Qu'est-ce que tu préfères dans ce travail?",
-          "content": "J'adore apprendre de nouvelles choses et pouvoir créer à peu près tout à partir de rien, créer de belles choses que les gens utiliseront et apprécieront."
+          "label": "O que você mais gosta neste trabalho?",
+          "content": "Adoro aprender coisas novas e poder criar praticamente tudo do zero, criar coisas bonitas que as pessoas usarão e apreciarão."
         },
         {
-          "label": "Des passions en dehors du travail?",
-          "content": "J'adore ce que je fais, donc je passe généralement beaucoup de temps à travailler sur des projets personnels, la photographie, etc. Je suis aussi un grand accro au sport. Je vais souvent à la salle de sport et j'ai récemment commencé l'escalade !"
+          "label": "Tem paixões fora do trabalho?",
+          "content": "Eu amo o que faço, então geralmente passo muito tempo trabalhando em projetos pessoais, fotografia, etc. Também sou muito fã de esportes. Vou frequentemente à academia e comecei a escalar recentemente!"
         }
       ]
     }

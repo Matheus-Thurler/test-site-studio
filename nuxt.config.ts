@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   css: ['~/assets/style/main.css'],
 
   site: {
-    url: 'https://canvas.hrcd.fr',
+    url: 'https://matheusthurler.com.br',
     defaultLocale: 'en',
     indexable: true,
   },
