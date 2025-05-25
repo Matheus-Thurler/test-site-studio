@@ -1,58 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/__sitemap__/style.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://canvas.hrcd.fr/</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en/about</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/about" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/about" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr/about" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en/about</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/about" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/about" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/about" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en/contact</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/contact" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/contact" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr/contact" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en/contact</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/contact" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/contact" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/contact" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en/works</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/works" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/works" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr/works" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en/legal</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/legal" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/legal" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/legal" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en/writing</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/writing" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/writing" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr/writing" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en/works</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/works" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/works" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/works" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en/articles/5-amazing-raycast-nuxt-snippets</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/articles/5-amazing-raycast-nuxt-snippets" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/articles/5-amazing-raycast-nuxt-snippets" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr/articles/5-amazing-raycast-nuxt-snippets" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en/writing</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/writing" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/writing" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/writing" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en/articles/launch-your-portfolio</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/articles/launch-your-portfolio" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/articles/launch-your-portfolio" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr/articles/launch-your-portfolio" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en/articles/5-amazing-raycast-nuxt-snippets</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/articles/5-amazing-raycast-nuxt-snippets" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/articles/5-amazing-raycast-nuxt-snippets" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/articles/5-amazing-raycast-nuxt-snippets" hreflang="pt-BR" />
     </url>
     <url>
-        <loc>https://canvas.hrcd.fr/en/articles/not-an-impostor</loc>
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/articles/not-an-impostor" hreflang="x-default" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/en/articles/not-an-impostor" hreflang="en-US" />
-        <xhtml:link rel="alternate" href="https://canvas.hrcd.fr/ptbr/articles/not-an-impostor" hreflang="pt-BR" />
+        <loc>https://matheusthurler.com.br/en/articles/launch-your-portfolio</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/articles/launch-your-portfolio" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/articles/launch-your-portfolio" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/articles/launch-your-portfolio" hreflang="pt-BR" />
+    </url>
+    <url>
+        <loc>https://matheusthurler.com.br/en/articles/not-an-impostor</loc>
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/articles/not-an-impostor" hreflang="x-default" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/en/articles/not-an-impostor" hreflang="en-US" />
+        <xhtml:link rel="alternate" href="https://matheusthurler.com.br/ptbr/articles/not-an-impostor" hreflang="pt-BR" />
     </url>
 </urlset>
-<!-- XML Sitemap generated by @nuxtjs/sitemap v7.3.0 at 2025-05-24T21:30:52.792Z -->
+<!-- XML Sitemap generated by @nuxtjs/sitemap v7.3.0 at 2025-05-25T16:50:36.806Z -->
