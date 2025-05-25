@@ -3,7 +3,7 @@ import type { Collections } from '@nuxt/content'
 
 const searchedTags = ref<string[]>([])
 const searchedTitle = ref('')
-const showSearch = ref(false)
+const showSearch = ref(true)
 
 const { locale } = useI18n()
 

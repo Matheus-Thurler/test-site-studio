@@ -1,12 +1,10 @@
 ---
-title: "Commands You Need to Know "
+title: "Kubectl: Commands You Need to Know "
 date: 20/01/2025
 description: Aiming for perfectionism is a very good state of mind. On the other
   hand, working until perfectionism is 100% can also be bad. Here are some tips
   to help you get your portfolio off the ground.
 tags:
-  - Development
-  - Productivity
   - Kubernetes
 image: https://media-site-matheus-nuxt.s3.amazonaws.com/kubectl.jpeg
 readingTime: "5"
