@@ -10,6 +10,7 @@ const { locale } = useI18n()
     :lang="locale"
     class="font-geist text-[var(--ui-text)] transition-colors duration-300 selection:bg-white/60 selection:text-zinc-800"
   >
+    <meta name="google-adsense-account" content="ca-pub-3348120452456400">
     <Body>
       <LayoutScrollToTop />
       <NuxtLayout>
