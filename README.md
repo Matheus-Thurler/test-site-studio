@@ -118,6 +118,7 @@ First check the `app.config.ts` file to change the global configuration of the p
 
 ### Writing
 
+
 1. Navigate to the `content/2.articles` directory.
 2. Here, you'll find Markdown files for each article. To modify an article, simply open its Markdown file and make your changes.
 3. To add a new article, create a new Markdown file in this directory. The name of the file will be used as the URL slug for the article.
