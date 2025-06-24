@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const stack = await queryCollection('stack').first()
+// const stack = await queryCollection('stack').first()
 </script>
 
 <template>
