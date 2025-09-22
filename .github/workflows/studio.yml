@@ -136,7 +136,7 @@ jobs:
           DEBUG: "node-gyp,prebuild-install,better-sqlite3"
         run: |
           echo "Using NPM to install dependencies and rebuild modules."
-          npm ci --force
+          npm ci --force --legacy-peer-deps
           echo "Attempting to rebuild better-sqlite3 with npm, verbose logging, and debug flags..."
           npm rebuild better-sqlite3 --build-from-source --loglevel=debug
 
