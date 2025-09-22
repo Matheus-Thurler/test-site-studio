@@ -8,7 +8,7 @@ export default defineAppConfig({
     job: 'DevOps',
     email: 'contato@matheusthurler.com.br',
     phone: '+55 (22) 9855-3008',
-    picture: 'https://media.licdn.com/dms/image/v2/D4D03AQGuIuu9aRhlkw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1724237499593?e=1756339200&v=beta&t=jp-ZukEf7qL60KszftV6SRD7fNiNGZBXREsBUXXsv-g',
+    picture: '../public/projects/matheus-summit.jpg',
   },
   socials: {
     github: 'https://github.com/Matheus-Thurler',
